@@ -11,7 +11,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Backgrond
   - 
   - 
   - 
@@ -40,6 +40,12 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Backgrond
+    uniqueID: 1085614889
+    locked: 0
+  - name: GamePlay
+    uniqueID: 4078808883
     locked: 0
   - name: Tile
     uniqueID: 4115708423
