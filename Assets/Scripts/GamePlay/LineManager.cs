@@ -67,6 +67,7 @@ public class LineManager : MonoBehaviour
         for (int x = -halfWidth; x < halfWidth; x++)
         {
             _board.Renderer.ClearTile(new Vector3Int(x, rowY, 0));
+            GameEvents.OnLineClear.Invoke(); // Gọi sự kiện để phát âm thanh và hiệu ứng nổ
         }
 
         // 2. Dời toàn bộ các hàng phía trên xuống 1 đơn vị

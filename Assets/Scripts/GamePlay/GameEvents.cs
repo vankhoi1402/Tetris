@@ -14,4 +14,13 @@ public static class GameEvents
     {
         OnLinesClearedBatch?.Invoke(rows);
     }
+    // Các sự kiện trạng thái Game mới
+    public static System.Action OnGamePaused;
+    public static System.Action OnGameResumed;
+    public static System.Action OnGameOver;
+    public static Action OnOpenSettings;
+    //event game play 
+    public static Action OnMove;
+    public static Action OnLock;
+    public static Action OnLineClear;
 }

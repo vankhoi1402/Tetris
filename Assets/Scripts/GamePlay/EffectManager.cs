@@ -31,7 +31,7 @@ public class EffectManager : MonoBehaviour
 
                 
 
-                Destroy(vfx, 2.0f);
+                Destroy(vfx, 4.0f);
             }
         }
 

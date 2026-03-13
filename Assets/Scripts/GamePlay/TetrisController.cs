@@ -59,7 +59,9 @@ public class TetrisController : MonoBehaviour
     private void HandleMove(float dir)
     {
         Vector3Int translation = new Vector3Int(Mathf.RoundToInt(dir), 0, 0);
+        GameEvents.OnMove.Invoke();
         MovePiece(translation);
+        
     }
 
     private void HandleRotate()
@@ -82,8 +84,9 @@ public class TetrisController : MonoBehaviour
         {
             activePiece.cells = originalCells;
         }
-
+        GameEvents.OnMove.Invoke();
         board.Render(activePiece, true);
+        
     }
 
     private void HandleHardDrop()
@@ -97,6 +100,7 @@ public class TetrisController : MonoBehaviour
 
         board.Render(activePiece, true);
         LockPiece();
+        GameEvents.OnLock.Invoke();
     }
     #endregion
 
@@ -108,6 +112,7 @@ public class TetrisController : MonoBehaviour
         if (board.IsValidMove(activePiece.cells, nextPos))
         {
             activePiece.position = nextPos;
+            
             board.Render(activePiece, true);
         }
         else
@@ -119,6 +124,7 @@ public class TetrisController : MonoBehaviour
                 LockPiece();
             }
         }
+        
     }
 
     private void LockPiece()
@@ -128,6 +134,7 @@ public class TetrisController : MonoBehaviour
 
         // Xóa hàng (LineManager sẽ dùng board.IsLineFull và Renderer để xử lý)
         lineManager.ClearFullLines();
+       // GameEvents.OnLock.Invoke();
 
         SpawnNewPiece();
     }
@@ -177,8 +184,10 @@ public class TetrisController : MonoBehaviour
         if (!board.IsValidMove(activePiece.cells, activePiece.position))
         {
             Debug.LogError("GAME OVER!");
+            
             // Ở đây bạn có thể gọi màn hình Game Over UI
             this.enabled = false; // Dừng controller
+            GameManager.Instance.GameOver();
             return;
         }
 
